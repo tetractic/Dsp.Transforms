@@ -1,0 +1,9 @@
+﻿abstract Tetractic.Dsp.Transforms.DftPlan<T>.InverseTransform(System.ReadOnlySpan<T> input, System.Span<T> output) -> void
+abstract Tetractic.Dsp.Transforms.DftPlan<T>.InverseTransformUnnormalized(System.ReadOnlySpan<T> input, System.Span<T> output) -> void
+abstract Tetractic.Dsp.Transforms.DftPlan<T>.Transform(System.ReadOnlySpan<T> input, System.Span<T> output) -> void
+static Tetractic.Dsp.Transforms.DftPlan.Create<T>(int length) -> Tetractic.Dsp.Transforms.DftPlan<T>!
+Tetractic.Dsp.Transforms.DftPlan
+Tetractic.Dsp.Transforms.DftPlan<T>
+Tetractic.Dsp.Transforms.DftPlan<T>.CanTransformInPlace.get -> bool
+Tetractic.Dsp.Transforms.DftPlan<T>.DftPlan(int length, bool canTransformInPlace) -> void
+Tetractic.Dsp.Transforms.DftPlan<T>.Length.get -> int

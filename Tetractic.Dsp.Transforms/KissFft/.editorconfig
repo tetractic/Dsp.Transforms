@@ -1,0 +1,3 @@
+﻿[*.cs]
+
+file_header_template = Copyright (c) 2003-2010, Mark Borgerding. All rights reserved.\nCopyright (c) 2024 Carl Reinke\nSPDX-License-Identifier: BSD-3-Clause\nhttps://github.com/mborgerding/kissfft
