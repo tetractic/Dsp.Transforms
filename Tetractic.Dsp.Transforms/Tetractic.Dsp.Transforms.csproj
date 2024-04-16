@@ -52,12 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="KissFft/*" />
-    <Compile Remove="KissFftDftPlan`1.cs" />
-    <Compile Remove="KissFft/*.cs" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
