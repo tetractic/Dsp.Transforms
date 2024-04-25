@@ -44,8 +44,7 @@ internal sealed class OouraDftPlan<T> : DftPlan<T>
             input.CopyTo(output);
         }
 
-        int nw = _ip[0];
-        Fftsg<T>.cftbsub(2 * Length, output, _ip, nw, _w);
+        Fftsg<T>.cdft(2 * Length, output, _ip, _w);
     }
 
     /// <inheritdoc/>
@@ -64,8 +63,7 @@ internal sealed class OouraDftPlan<T> : DftPlan<T>
             input.CopyTo(output);
         }
 
-        int nw = _ip[0];
-        Fftsg<T>.cftfsub(2 * Length, output, _ip, nw, _w);
+        Fftsg<T>.icdft(2 * Length, output, _ip, _w);
 
         T scale = T.One / T.CreateTruncating(Length);
         for (int i = 0; i < output.Length; ++i)
@@ -88,7 +86,6 @@ internal sealed class OouraDftPlan<T> : DftPlan<T>
             input.CopyTo(output);
         }
 
-        int nw = _ip[0];
-        Fftsg<T>.cftfsub(2 * Length, output, _ip, nw, _w);
+        Fftsg<T>.icdft(2 * Length, output, _ip, _w);
     }
 }

@@ -4,6 +4,7 @@
 // https://www.kurims.kyoto-u.ac.jp/~ooura/fft.html
 
 using System;
+using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
@@ -20,6 +21,24 @@ internal static class Fftsg<T>
 
 #pragma warning disable IDE1006 // Naming Styles
 
+    internal static void icdft(int n, Span<T> a, ReadOnlySpan<int> ip, ReadOnlySpan<T> w)
+    {
+        int nw;
+
+        nw = ip[0];
+        Debug.Assert(nw == n >> 2);
+        cftfsub(n, a, ip, nw, w);
+    }
+
+    internal static void cdft(int n, Span<T> a, ReadOnlySpan<int> ip, ReadOnlySpan<T> w)
+    {
+        int nw;
+
+        nw = ip[0];
+        Debug.Assert(nw == n >> 2);
+        cftbsub(n, a, ip, nw, w);
+    }
+
     internal static void makewt(int nw, Span<int> ip, Span<T> w)
     {
         int j, nwh, nw0, nw1;
@@ -30,8 +49,9 @@ internal static class Fftsg<T>
         if (nw > 2)
         {
             nwh = nw >> 1;
-            delta = T.Atan(T.One) / ToT(nwh);
-            wn4r = T.Cos(delta * ToT(nwh));
+            T nhwT = ToT(nwh);
+            delta = T.Atan(T.One) / nhwT;
+            wn4r = T.Cos(delta * nhwT);
             w[0] = T.One;
             w[1] = wn4r;
             if (nwh == 4)
@@ -113,7 +133,7 @@ internal static class Fftsg<T>
 
     // TODO: makect
 
-    internal static void cftfsub(int n, Span<T> a, ReadOnlySpan<int> ip, int nw, ReadOnlySpan<T> w)
+    private static void cftfsub(int n, Span<T> a, ReadOnlySpan<int> ip, int nw, ReadOnlySpan<T> w)
     {
         if (n > 8)
         {
@@ -162,7 +182,7 @@ internal static class Fftsg<T>
         }
     }
 
-    internal static void cftbsub(int n, Span<T> a, ReadOnlySpan<int> ip, int nw, ReadOnlySpan<T> w)
+    private static void cftbsub(int n, Span<T> a, ReadOnlySpan<int> ip, int nw, ReadOnlySpan<T> w)
     {
         if (n > 8)
         {
