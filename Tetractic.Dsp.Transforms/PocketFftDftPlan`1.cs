@@ -15,7 +15,7 @@ internal sealed class PocketFftDftPlan<T> : DftPlan<T>
 {
     private readonly PocketFft<T>.cfft_plan _plan;
     private readonly PocketFft<T>.cmplx[]? _akf;
-    private readonly PocketFft<T>.cmplx[]? _h;
+    private readonly PocketFft<T>.cmplx[] _h;
 
     internal PocketFftDftPlan(int length)
         : base(length, canTransformInPlace: true)

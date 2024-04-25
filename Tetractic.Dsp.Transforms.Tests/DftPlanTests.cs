@@ -13,7 +13,7 @@ public class DftPlanTests
 {
     private const string _fftwInputFormatString = "fftw.{0}.in";
 
-    private const string _fftwOuputFormatString = "fftw.{0}.out";
+    private const string _fftwOutputFormatString = "fftw.{0}.out";
 
     private static readonly double _epsilon = double.Pow(10, -15.55);
 
@@ -96,7 +96,7 @@ public class DftPlanTests
     {
         var fft = DftPlan.Create<double>(n);
         double[] actual = ReadValues(string.Format(_fftwInputFormatString, n), n * 2);
-        double[] expected = ReadValues(string.Format(_fftwOuputFormatString, n), n * 2);
+        double[] expected = ReadValues(string.Format(_fftwOutputFormatString, n), n * 2);
         if (fft.CanTransformInPlace)
         {
             fft.Transform(actual, actual);
@@ -117,8 +117,7 @@ public class DftPlanTests
     public void InverseTransform(int n)
     {
         var fft = DftPlan.Create<double>(n);
-
-        double[] actual = ReadValues(string.Format(_fftwOuputFormatString, n), n * 2);
+        double[] actual = ReadValues(string.Format(_fftwOutputFormatString, n), n * 2);
         double[] expected = ReadValues(string.Format(_fftwInputFormatString, n), n * 2);
         if (fft.CanTransformInPlace)
         {
